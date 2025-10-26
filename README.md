@@ -85,9 +85,9 @@ API_KEY=sua_chave_de_api_aqui
 ```
 
 ⚠️ **Importante**: 
-- Nunca compartilhe ou commite sua chave de API no controle de versão. Adicione `.env` ao seu `.gitignore`
-- Este projeto requer uma ferramenta de build (como Vite, Webpack, ou Parcel) que suporte variáveis de ambiente para aplicações client-side
-- O Vite, por exemplo, automaticamente carrega variáveis do arquivo `.env` e as disponibiliza via `process.env` durante o build
+- Nunca compartilhe ou commite sua chave de API no controle de versão. Adicione `.env` ao seu `.gitignore`.
+- Este projeto requer uma ferramenta de build (como Vite, Webpack, ou Parcel) que suporte variáveis de ambiente para aplicações client-side.
+- O Vite, por exemplo, automaticamente carrega variáveis do arquivo `.env` e as disponibiliza via `process.env` durante o build.
 
 ### Passo 3: Obtenha uma Chave de API do Google Gemini
 
