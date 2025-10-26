@@ -23,7 +23,13 @@ const Message: React.FC<MessageProps> = ({ message }) => {
   const handleDownload = () => {
     if (!message.fileContent || !message.downloadFileName) return;
 
-    const mimeType = message.downloadFileName.endsWith('.csv') ? 'text/csv' : 'text/plain';
+    let mimeType = 'text/plain';
+    if (message.downloadFileName.endsWith('.csv')) {
+      mimeType = 'text/csv';
+    } else if (message.downloadFileName.endsWith('.json')) {
+      mimeType = 'application/json';
+    }
+
     const blob = new Blob([message.fileContent], { type: `${mimeType};charset=utf-8` });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');

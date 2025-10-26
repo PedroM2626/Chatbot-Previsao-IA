@@ -11,7 +11,7 @@ const App: React.FC = () => {
     {
       id: 'initial',
       role: 'ai',
-      text: 'Olá! Sou seu assistente de previsões. Envie-me um arquivo (CSV, JSON, TXT) ou uma imagem, faça uma pergunta e eu farei uma análise para você. Se aplicável, gerarei um arquivo com os resultados para download.',
+      text: 'Olá! Sou seu assistente de ciência de dados. Posso realizar Análise Exploratória (EDA), tratar e normalizar dados, e criar previsões. Envie um arquivo (CSV, JSON, TXT) e me diga o que fazer.',
     },
   ]);
   const [uploadedFile, setUploadedFile] = useState<FileData | null>(null);
@@ -73,20 +73,20 @@ const App: React.FC = () => {
       fileName: uploadedFile?.name,
     };
 
-    setMessages(prev => [...prev, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
     setIsLoading(true);
 
     try {
-      const aiResponse = await runPrediction(prompt, uploadedFile);
+      // Pass the full history including the new user message, and the file object separately
+      const aiResponse = await runPrediction(newMessages, uploadedFile);
       
-      const fileExtension = uploadedFile?.name.split('.').pop() || 'txt';
-
       const aiMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'ai',
         text: aiResponse.analysis,
         fileContent: aiResponse.fileContent || undefined,
-        downloadFileName: aiResponse.fileContent ? `previsao_${Date.now()}.${fileExtension}` : undefined,
+        downloadFileName: aiResponse.downloadFileName || undefined,
       };
       setMessages(prev => [...prev, aiMessage]);
     } catch (error) {
@@ -101,13 +101,13 @@ const App: React.FC = () => {
       setIsLoading(false);
       setUploadedFile(null);
     }
-  }, [uploadedFile]);
+  }, [uploadedFile, messages]);
 
   return (
     <div className="flex flex-col h-screen bg-slate-900 font-sans">
       <header className="flex items-center p-4 bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 shadow-lg">
         <BotIcon className="w-8 h-8 text-cyan-400 mr-3" />
-        <h1 className="text-xl font-bold text-slate-200">Chatbot de Previsão com IA</h1>
+        <h1 className="text-xl font-bold text-slate-200">Assistente de Ciência de Dados</h1>
       </header>
       <main className="flex-1 overflow-y-auto p-4">
         <ChatWindow messages={messages} isLoading={isLoading} />
