@@ -84,7 +84,10 @@ Crie um arquivo `.env` na raiz do projeto e adicione sua chave de API do Google 
 API_KEY=sua_chave_de_api_aqui
 ```
 
-⚠️ **Importante**: Nunca compartilhe ou commite sua chave de API no controle de versão. Adicione `.env` ao seu `.gitignore`.
+⚠️ **Importante**: 
+- Nunca compartilhe ou commite sua chave de API no controle de versão. Adicione `.env` ao seu `.gitignore`
+- Este projeto requer uma ferramenta de build (como Vite, Webpack, ou Parcel) que suporte variáveis de ambiente para aplicações client-side
+- O Vite, por exemplo, automaticamente carrega variáveis do arquivo `.env` e as disponibiliza via `process.env` durante o build
 
 ### Passo 3: Obtenha uma Chave de API do Google Gemini
 
@@ -95,7 +98,9 @@ API_KEY=sua_chave_de_api_aqui
 
 ### Passo 4: Execute a Aplicação
 
-Você pode usar qualquer servidor de desenvolvimento. Recomendamos Vite:
+Este projeto requer uma ferramenta de build que suporte TypeScript, React e variáveis de ambiente. Recomendamos **Vite**:
+
+#### Opção 1: Usando Vite (Recomendado)
 
 ```bash
 # Instale o Vite globalmente (se ainda não tiver)
@@ -105,17 +110,26 @@ npm install -g vite
 vite
 ```
 
-Ou use um servidor HTTP simples:
+O Vite automaticamente:
+- Compila TypeScript e JSX
+- Carrega variáveis de ambiente do arquivo `.env`
+- Fornece hot reload para desenvolvimento
+- Serve a aplicação em `http://localhost:5173`
+
+#### Opção 2: Configurar com Bundler Alternativo
+
+Se preferir usar outro bundler (Webpack, Parcel, etc.), certifique-se de configurar:
+- Suporte a TypeScript e React/JSX
+- Carregamento de variáveis de ambiente
+- Resolução de módulos ES6
 
 ```bash
-# Python 3
-python -m http.server 8000
-
-# Node.js (http-server)
-npx http-server
+# Exemplo com Parcel
+npm install -g parcel
+parcel index.html
 ```
 
-Acesse a aplicação em `http://localhost:5173` (Vite) ou a porta correspondente ao seu servidor.
+⚠️ **Nota**: Não use servidores HTTP simples (como `python -m http.server`) pois eles não compilam TypeScript nem carregam variáveis de ambiente.
 
 ## 💡 Como Usar
 
@@ -169,7 +183,7 @@ Pergunta: "Adicione uma coluna de previsão de churn para cada cliente e gere um
 No arquivo `services/geminiService.ts`, você pode ajustar:
 
 ```typescript
-// Modelo usado
+// Modelo usado (conforme implementado no código)
 const model = 'gemini-2.5-flash';
 
 // Parâmetros de geração
@@ -179,6 +193,8 @@ config: {
   // ... outros parâmetros
 }
 ```
+
+**Nota**: O nome do modelo `gemini-2.5-flash` é usado com a flag `vertexai: true` na configuração da API. Verifique a [documentação do Google Gemini](https://ai.google.dev/docs) para modelos disponíveis e atualizações.
 
 ### Modificar a Instrução do Sistema
 
