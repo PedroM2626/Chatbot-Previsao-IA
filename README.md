@@ -12,6 +12,12 @@ Este projeto implementa uma interface de chat moderna e interativa que atua como
 
 O chatbot utiliza o modelo **Gemini 2.5 Flash** da Google através do **Vertex AI Studio**, proporcionando análises inteligentes e automatizadas. Quando aplicável, o chatbot pode gerar arquivos processados ou com previsões que podem ser baixados pelo usuário.
 
+## 🌐 Demonstração Online
+
+O projeto está disponível online e pode ser acessado em: **https://chatbot-previsao-ia.vercel.app/**
+
+Experimente a aplicação sem precisar instalar ou configurar nada localmente!
+
 ## ✨ Funcionalidades
 
 ### 🔬 Ciclo Completo de Machine Learning
