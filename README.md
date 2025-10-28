@@ -103,7 +103,7 @@ cd Chatbot-Previsao-IA
 Crie um arquivo `.env` na raiz do projeto e adicione sua chave de API do Google Gemini:
 
 ```env
-API_KEY=sua_chave_de_api_aqui
+VITE_API_KEY=sua_chave_de_api_aqui
 ```
 
 ⚠️ **Importante**: 

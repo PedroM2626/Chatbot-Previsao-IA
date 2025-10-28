@@ -1,0 +1,87 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+.report/
+
+# Node.js
+# attention: if you commit this file, you have to add it to .gitignore
+# as well. see https://github.com/npm/npm/issues/6530
+/node_modules
+/jspm_packages
+/.pnp
+.pnp.js
+
+# Runtime data
+*.tgz
+.env
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle
+.rpt2_cache/
+.tsdx/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Vite
+.vite/
+dist/
+
+# OSX
+.DS_Store
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs
+*.njsproj
+*.sln
+*.bak
+
+# dotenv environment variables file
+.env*
+
+# next.js build output
+.next/
+
+# nuxt.js build output
+.nuxt/
+
+# vuepress build output
+.vuepress/dist
+
+# sveltekit build output
+.svelte-kit
+
+# Docusaurus build output
+build/
+
+# Serverless directories
+.serverless/
+
+# FuseBox
+.fusebox/
+
+# DynamoDB Local
+.dynamodb/
+
+# TernJS
+.tern-port
+
+# Windows
+Thumbs.db

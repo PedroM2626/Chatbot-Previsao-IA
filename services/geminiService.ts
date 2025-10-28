@@ -1,12 +1,11 @@
-
 import { GoogleGenAI, GenerateContentResponse, Part, Type, Content } from '@google/genai';
 import { FileData, ChatMessage } from '../types';
 
-if (!process.env.API_KEY) {
-    throw new Error("A variável de ambiente API_KEY não está definida.");
+if (!import.meta.env.VITE_API_KEY) {
+    throw new Error("A variável de ambiente VITE_API_KEY não está definida.");
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY, vertexai: true });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
 
 const model = 'gemini-2.5-flash';
 
